@@ -34,7 +34,7 @@ internal extension Drawer {
             range: activeBound,
             spring: springHeight)
 
-        animation = Animation?.none
+        animation = Animation.linear.speed(10)
     }
     
     func dragEnded(_ value: DragGesture.Value) {
