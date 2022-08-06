@@ -19,6 +19,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,
@@ -35,6 +36,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: max(spring, 0),
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,
@@ -52,6 +54,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,
@@ -69,6 +72,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,
@@ -85,6 +89,24 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
+            didLayoutForSizeClass: didLayoutForSizeClass,
+            impactGenerator: impactGenerator,
+            dislodgeGenerator: dislodgeGenerator,
+            content: content)
+    }
+    
+    /// A callback to receive updates when the drawer changes height
+    /// - Parameter onHeightChange: The callback to handle updates
+    /// - Returns: Drawer
+    func onHeightChange(_ didChange: @escaping (_ height: CGFloat) -> ()) -> Drawer {
+        return Drawer(
+            heights: $heights,
+            height: height,
+            restingHeight: restingHeight,
+            springHeight: springHeight,
+            didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,
@@ -102,6 +124,7 @@ public extension Drawer {
             restingHeight: restingHeight,
             springHeight: springHeight,
             didRest: didRest,
+            didChange: didChange,
             didLayoutForSizeClass: didLayoutForSizeClass,
             impactGenerator: impactGenerator,
             dislodgeGenerator: dislodgeGenerator,

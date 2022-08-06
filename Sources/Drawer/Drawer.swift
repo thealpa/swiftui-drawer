@@ -16,7 +16,11 @@ public struct Drawer<Content>: View where Content: View {
     @Binding public var heights: [CGFloat]
     
     /// The current height of the displayed drawer
-    @State public var height: CGFloat
+    @State public var height: CGFloat {
+        didSet {
+            didChange?(height)
+        }
+    }
     
     /// The current height marker the drawer is conformed to. Change triggers `onRest`
     @State internal var restingHeight: CGFloat {
@@ -27,6 +31,9 @@ public struct Drawer<Content>: View where Content: View {
     
     /// A callback executed when the drawer reaches a restingHeight
     internal var didRest: ((_ height: CGFloat) -> ())? = nil
+    
+    /// A callback executed when the drawer changes height
+    internal var didChange: ((_ height: CGFloat) -> ())? = nil
     
     // MARK: Orientation
     
@@ -97,6 +104,7 @@ internal extension Drawer {
         restingHeight: CGFloat,
         springHeight: CGFloat,
         didRest: ((_ height: CGFloat) -> ())?,
+        didChange: ((_ height: CGFloat) -> ())?,
         didLayoutForSizeClass: ((SizeClass) -> ())?,
         impactGenerator: UIImpactFeedbackGenerator?,
         dislodgeGenerator: UIImpactFeedbackGenerator?,
@@ -107,6 +115,7 @@ internal extension Drawer {
         self._restingHeight = .init(initialValue: restingHeight)
         self.springHeight = springHeight
         self.didRest = didRest
+        self.didChange = didChange
         self.didLayoutForSizeClass = didLayoutForSizeClass
         self.content = content
         self.impactGenerator = impactGenerator
